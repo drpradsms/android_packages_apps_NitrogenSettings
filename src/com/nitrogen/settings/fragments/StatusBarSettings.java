@@ -44,7 +44,6 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
     private static final String SYSUI_ROUNDED_SIZE = "sysui_rounded_size";
     private static final String SYSUI_ROUNDED_CONTENT_PADDING = "sysui_rounded_content_padding";
     private CustomSeekBarPreference mCornerRadius;
-    private CustomSeekBarPreference mContentPadding;
     private Context mContext;
 
     @Override
@@ -83,13 +82,6 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
                 Settings.Secure.SYSUI_ROUNDED_SIZE, (int) (res.getDimension(resourceIdRadius)/displayDensity));
         mCornerRadius.setValue(cornerRadius / 1);
         mCornerRadius.setOnPreferenceChangeListener(this);
-         // Rounded Content Padding
-        int resourceIdPadding = res.getIdentifier("com.android.systemui:dimen/rounded_corner_content_padding", null, null);
-        mContentPadding = (CustomSeekBarPreference) findPreference(SYSUI_ROUNDED_CONTENT_PADDING);
-        int contentPadding = Settings.Secure.getInt(mContext.getContentResolver(),
-                Settings.Secure.SYSUI_ROUNDED_CONTENT_PADDING, (int) (res.getDimension(resourceIdPadding)/displayDensity));
-        mContentPadding.setValue(contentPadding / 1);
-        mContentPadding.setOnPreferenceChangeListener(this);
 
     }
 
@@ -113,11 +105,6 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
             int value = (Integer) objValue;
             Settings.Secure.putInt(mContext.getContentResolver(),
                 Settings.Secure.SYSUI_ROUNDED_SIZE, value * 1);
-           return true;
-        } else if (preference == mContentPadding) {
-            int value = (Integer) objValue;
-            Settings.Secure.putInt(mContext.getContentResolver(),
-                Settings.Secure.SYSUI_ROUNDED_CONTENT_PADDING, value * 1);
            return true;
         }
         return false;

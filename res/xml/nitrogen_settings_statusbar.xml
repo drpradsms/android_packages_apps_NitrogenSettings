@@ -66,14 +66,6 @@
 	        settings:units=""
 	        android:persistent="false" 
                 android:dependency="sysui_rounded_fwvals" />
-   <com.nitrogen.settings.preferences.CustomSeekBarPreference
-	        android:key="sysui_rounded_content_padding"
-	        android:title="@string/content_padding"
-	        android:max="10"
-	        settings:min="0"
-	        settings:units=""
-                android:persistent="false"
-                android:dependency="sysui_rounded_fwvals" />
      </PreferenceCategory>
 
 
